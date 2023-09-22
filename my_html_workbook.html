@@ -5,7 +5,7 @@
     </head>
     <body>
         <a href="https://e.tsi.lv/user/profile.php?id=11574&name=Ruslans&surname=Bulaks&age=21&faclty=IZF" >GET</a>
-        <a href="https://e.tsi.lv/user/profile.php?id=11574&name=Ruslans&surname=Bulaks&age=21&faclty=IZF" method="POST">POST</a>
+        <a onclick="addStudent()">POST</a>
         <form>
             <label for="fname">First name:</label><br>
             <input type="text" id="fname"><br><br>
@@ -20,4 +20,31 @@
             <input type="submit" formaction="https://e.tsi.lv/user/profile.php" value="Submit">
         </form>
     </body>
+    <script>
+        function addStudent() {
+            const url = `https://e.tsi.lv/user/profile.php`;
+            let obj = {
+                name: "Ruslans",
+                surname: 'Bulaks',
+                age: 21,
+                id: 11574,
+                faculty: "IZF"
+            }
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    //'Authorization': `Bearer ${client.user.identity.getAuthorizationToken().value}`
+                },
+                body: {
+
+                }
+            })
+            .then(response => response.text())
+            .then((text) => {
+                console.log(text);
+            })
+            .catch(err => console.error(err));
+        }
+    </script>
 </html>
