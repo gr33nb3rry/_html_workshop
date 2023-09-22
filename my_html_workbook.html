@@ -36,9 +36,8 @@
                     'Content-Type': 'application/json',
                     //'Authorization': `Bearer ${client.user.identity.getAuthorizationToken().value}`
                 },
-                body: {
-
-                }
+                body: JSON.stringify(object)
+                
             })
             .then(response => response.text())
             .then((text) => {
