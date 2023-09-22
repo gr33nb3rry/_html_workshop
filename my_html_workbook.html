@@ -6,6 +6,7 @@
     <body>
         <a href="https://e.tsi.lv/user/profile.php?id=11574&name=Ruslans&surname=Bulaks&age=21&faclty=IZF" >GET</a>
         <button onclick="addStudent()">POST</button>
+        <!--
         <form>
             <label for="fname">First name:</label><br>
             <input type="text" id="fname"><br><br>
@@ -19,6 +20,14 @@
             <input type="text" id="fid"><br><br>
             <input type="submit" formaction="https://e.tsi.lv/user/profile.php" value="Submit">
         </form>
+        -->
+        <iframe width="480" height="270" src="https://v4.cdnpk.net/videvo_files/video/free/video0455/large_watermarked/_import_60914814e544c2.10484373_FPpreview.mp4"> </iframe><br>
+        <button onclick="getLocation()">get my location</button>
+        <p id="loc"></p>
+        <br> 
+        <img ondrop="drop(event)" src="https://img.freepik.com/free-vector/hand-drawn-halloween-illustration_23-2149643578.jpg" ondragover="allowDrop(event)"width="500" height="500"></img>
+        <br>
+        <img id="drag1" src="https://img.freepik.com/free-vector/crazy-universe-abstract-illustration_52683-87571.jpg?w=360" draggable="true" ondragstart="drag(event)" width="240" height="320">
     </body>
     <script>
         function addStudent() {
@@ -44,6 +53,32 @@
                 console.log(text);
             })
             .catch(err => console.error(err));
+        }
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+        var x = document.getElementById("loc");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
         }
     </script>
 </html>
