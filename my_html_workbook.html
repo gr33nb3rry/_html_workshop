@@ -21,9 +21,10 @@
             <input type="submit" formaction="https://e.tsi.lv/user/profile.php" value="Submit">
         </form>
         -->
+        <br>
         <iframe width="480" height="270" src="https://www.youtube.com/embed/y881t8ilMyc"> </iframe><br>
-        <button onclick="getLocation()">get my location</button>
-        <p id="loc"></p>
+        <button onclick="getLocation()">Show location</button>
+        <p id="locaction"></p>
         <br> 
         <img ondrop="drop(event)" src="https://img.freepik.com/free-vector/hand-drawn-halloween-illustration_23-2149643578.jpg" ondragover="allowDrop(event)"width="500" height="500"></img>
         <br>
@@ -54,20 +55,20 @@
             })
             .catch(err => console.error(err));
         }
-        function allowDrop(ev) {
-            ev.preventDefault();
+        function allowDrop(event) {
+            event.preventDefault();
         }
 
-        function drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
         }
 
-        function drop(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            event.target.appendChild(document.getElementById(data));
         }
-        var x = document.getElementById("loc");
+        var x = document.getElementById("locaction");
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
