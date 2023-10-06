@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Lab 5</title>
+</head>
+<body>
+    <form>
+        <label>Email</label>
+        <input type="text" name="email"/>
+        <br />
+        <input type="submit" name="subscribe" id="subscribe_button" 
+               onmouseover="subcribe_hover_on()"
+               onmouseout="subcribe_hover_off()"
+               value="Subscribe"/>
+    </form>
+
+    <script>
+        let subscribeButton = document.getElementById("subscribe_button");
+        let subscribeButtonColorOn = "#f87002"
+        let subscribeButtonColorOff = "#a7204c"
+
+        function subcribe_hover_on() {
+            subscribeButton.style.backgroundColor = subscribeButtonColorOn
+        }
+        function subcribe_hover_off() {
+            subscribeButton.style.backgroundColor = subscribeButtonColorOff
+        }
+    </script>
+</body>
+</html>
